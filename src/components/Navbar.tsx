@@ -22,9 +22,6 @@ const Navbar:React.FC = () => {
             <Link className='nav-link text-white' to='/'>
               Dashboard
             </Link>
-            <Link className='nav-link text-white' to='/pokemon/:pokemonId'>
-              Pokemon
-            </Link>
 
           </div>
         </div>
