@@ -61,9 +61,9 @@ const Dashboard:React.FC = () => {
                           </div>
                           <div className="col-md-8">
                               <div className="card-body">
-                                  <h5 className="card-title">{mon.name}</h5>
+                                  <h5 className="card-title">#{mon.num}{' '}<span className="h4">{mon.name}</span></h5>
                                   <p className="card-text">
-                                    <span className="font-weight-bold">Type: </span>
+                                    <span className="font-weight-bold">Type(s): </span>
                                     {mon.type.map((t, i) => {
                                       return (
                                         <div>{t}{i === mon.type.length - 1 ? '': ', '}</div>
