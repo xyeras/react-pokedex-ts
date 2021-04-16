@@ -17,5 +17,3 @@ type Pokemon = {
     prev_evolution?: Array<{num:string, name:string}>;
     next_evolution?: Array<{num:string, name:string}>;
 };
-
-type SearchPokemon = (targetPokemon:string) => void;
