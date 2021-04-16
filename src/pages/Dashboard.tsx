@@ -1,11 +1,11 @@
 import { type } from 'node:os';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, FormEvent} from 'react';
 import { Link } from 'react-router-dom';
 import { pokemonData } from '../pokemonData';
 
 const Dashboard:React.FC = () => {
 
-    const [pokemon, setPokemon] = useState(pokemonData);
+    const [pokemon, setPokemon] = useState<Pokemon[]>(pokemonData);
 
     const [searchTerm, setSearchTerm] = useState('');
     
@@ -20,10 +20,10 @@ const Dashboard:React.FC = () => {
         searchTerm === '' ? setPokemon(pokemonData) : setPokemon(foundPokemon);
     }, [searchTerm]);
 
-    // const handleChange = event => {
-    //   console.log(event.target.value);
-    //   setSearchTerm(event.target.value);
-    // }
+    const handleChange = (event: FormEvent<HTMLInputElement>) => {
+      console.log(event.currentTarget.value);
+      setSearchTerm(event.currentTarget.value);
+    }
 
     return (
     <div id="dashboard">
@@ -34,9 +34,9 @@ const Dashboard:React.FC = () => {
             </div>
         </div>
 
-        {/* <div className="row d-flex">
+        <div className="row d-flex">
             <div className="col text-center">
-                <div className="content" form='group'>
+                <div className="content">
 
                     <input
                         type="text"
@@ -48,7 +48,7 @@ const Dashboard:React.FC = () => {
                     />
                 </div>
             </div>
-        </div> */}
+        </div>
 
         <div className="row mt-3">
             {pokemon.map(mon => {
