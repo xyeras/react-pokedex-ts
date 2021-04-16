@@ -7,6 +7,24 @@ const Dashboard:React.FC = () => {
 
     const [pokemon, setPokemon] = useState(pokemonData);
 
+    const [searchTerm, setSearchTerm] = useState('');
+    
+    useEffect(() => {
+
+        const foundPokemon = pokemon.filter(mon => {
+            return (
+                mon.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+
+        searchTerm === '' ? setPokemon(pokemonData) : setPokemon(foundPokemon);
+    }, [searchTerm]);
+
+    // const handleChange = event => {
+    //   console.log(event.target.value);
+    //   setSearchTerm(event.target.value);
+    // }
+
     return (
     <div id="dashboard">
 
@@ -16,25 +34,43 @@ const Dashboard:React.FC = () => {
             </div>
         </div>
 
+        {/* <div className="row d-flex">
+            <div className="col text-center">
+                <div className="content" form='group'>
+
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="pokemon-search"
+                        placeholder="Search for a Pokemon"
+                        value={searchTerm}
+                        onChange={handleChange}
+                    />
+                </div>
+            </div>
+        </div> */}
+
         <div className="row mt-3">
             {pokemon.map(mon => {
                 return (
                         
-                  <div className="card mb-3" style={{maxWidth: "540px"}} key={mon.id}>
+                  <div className="card mb-3" style={{minWidth: "540px"}} key={mon.id}>
                       <div className="row no-gutters">
-                          <div className="col-md-4">
+                          <div className="col-md-4 d-flex align-items-center justify-content-center">
                               <img src={mon.img} alt={mon.name}/>
                           </div>
                           <div className="col-md-8">
                               <div className="card-body">
                                   <h5 className="card-title">{mon.name}</h5>
                                   <p className="card-text">
-                                    Type: {mon.type.map( (t, i) => {
+                                    <span className="font-weight-bold">Type: </span>
+                                    {mon.type.map((t, i) => {
                                       return (
                                         <div>{t}{i === mon.type.length - 1 ? '': ', '}</div>
                                       );
                                     })}
-                                    Weaknesses: {mon.weaknesses.map( (w, i) => {
+                                    <span className="font-weight-bold">Weaknesses: </span>
+                                    {mon.weaknesses.map( (w, i) => {
                                       return (
                                         <div>{w}{i === mon.weaknesses.length - 1 ? '': ', '}</div>
                                       );
