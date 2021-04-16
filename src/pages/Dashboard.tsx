@@ -7,7 +7,7 @@ const Dashboard:React.FC = () => {
 
     const [pokemon, setPokemon] = useState<Pokemon[]>(pokemonData);
 
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState<string>('');
     
     useEffect(() => {
 

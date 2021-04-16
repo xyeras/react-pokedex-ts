@@ -11,7 +11,6 @@ const AppRouter:React.FC = () => {
             <div className="container">
                 <Switch>
                     <Route path='/' exact component={Dashboard} />
-                    <Route path='/pokemon' exact component={Pokemon}/>
                     <Route path='/pokemon/:pokemonId' exact component={Pokemon}/>
                 </Switch>
             </div>
