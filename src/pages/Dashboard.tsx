@@ -1,4 +1,3 @@
-import { type } from 'node:os';
 import React, {useState, useEffect, FormEvent} from 'react';
 import { Link } from 'react-router-dom';
 import { pokemonData } from '../pokemonData';
@@ -20,7 +19,7 @@ const Dashboard:React.FC = () => {
         searchTerm === '' ? setPokemon(pokemonData) : setPokemon(foundPokemon);
     }, [searchTerm]);
 
-    const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    const handleChange = (event: FormEvent<HTMLInputElement>): void => {
       console.log(event.currentTarget.value);
       setSearchTerm(event.currentTarget.value);
     }
